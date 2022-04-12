@@ -3,6 +3,7 @@
 const React = require("react"); // eslint-disable-line
 const feLib = require("../../src");
 const { JSDOM } = require("jsdom");
+const { act } = require("react-dom/test-utils")
 
 describe("FE React framework", function() {
   //
@@ -26,7 +27,7 @@ describe("FE React framework", function() {
       element,
       options: { props: { foo: "bar" } }
     });
-    framework.renderStart();
+    act(()=> {framework.renderStart()});
     expect(element.innerHTML).equals(`<p>hello bar</p>`);
   });
 
